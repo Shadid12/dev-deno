@@ -1,7 +1,14 @@
 /** @jsx h */
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { PageProps } from "$fresh/server.ts";
+import NewPost from "../../islands/NewPost.tsx";
+import Navbar from "../../islands/Navbar.tsx";
 
 export default function Greet(props: PageProps) {
-  return <div>New Post Here</div>;
+  return (
+    <Fragment>
+      <Navbar />
+      <NewPost />
+    </Fragment>
+  )
 }
