@@ -8,11 +8,7 @@ import { buttonStyle } from "../islands/Navbar.tsx";
 export const inputStyle = `p-4 border-2 border-purple-400 radius rounded-md flex w-9/12`;
 
 
-interface CounterProps {
-  start: number;
-}
-
-export default function NewPost(props: CounterProps) {
+export default function NewPost() {
   
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
