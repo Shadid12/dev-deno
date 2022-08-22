@@ -8,7 +8,7 @@ export default function Greet(props: PageProps) {
   return (
     <Fragment>
       <Navbar />
-      <NewPost />
+      <NewPost start={0}/>
     </Fragment>
   )
 }

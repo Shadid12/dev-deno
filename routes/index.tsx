@@ -1,10 +1,11 @@
 /** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
+import { h, Fragment } from "preact";
 import Navbar from "../islands/Navbar.tsx";
 
 export default function Home() {
   return (
-    <Navbar />
+    <Fragment>
+      <Navbar />
+    </Fragment>
   );
 }
