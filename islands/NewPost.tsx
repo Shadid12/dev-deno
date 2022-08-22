@@ -2,9 +2,11 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import { tw } from "@twind";
-
+import { faunaClient, q } from "../utils/db.ts";
 import { buttonStyle } from "../islands/Navbar.tsx";
+
 export const inputStyle = `p-4 border-2 border-purple-400 radius rounded-md flex w-9/12`;
+
 
 interface CounterProps {
   start: number;
@@ -15,9 +17,17 @@ export default function NewPost(props: CounterProps) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e: Event) => {
+  const handleSubmit = async (e: Event) => {
     e.preventDefault();
-    console.log(title, content);
+    await faunaClient.query(
+      q.Create(
+        q.Collection('Post'),
+        { data: { title, content } },
+      )
+    );
+    setTitle("");
+    setContent("");
+    alert("Post created!");
   }
 
   return (
