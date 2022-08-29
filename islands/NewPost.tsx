@@ -2,7 +2,6 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import { tw } from "@twind";
-import { faunaClient, q } from "../utils/db.ts";
 import { buttonStyle } from "../islands/Navbar.tsx";
 
 export const inputStyle = `p-4 border-2 border-purple-400 radius rounded-md flex w-9/12`;
@@ -15,15 +14,15 @@ export default function NewPost() {
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
-    await faunaClient.query(
-      q.Create(
-        q.Collection('Post'),
-        { data: { title, content } },
-      )
-    );
+    const response = await fetch("/api/post", {
+      method: "POST",
+      body: JSON.stringify({ title, content })
+    });
+    const data = await response.json();
+    console.log(data);
+    alert('Post created!');
     setTitle("");
     setContent("");
-    alert("Post created!");
   }
 
   return (
