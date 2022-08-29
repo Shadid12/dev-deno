@@ -33,28 +33,7 @@ export const handler: Handlers = {
   /**
    * Get all posts / Get a single post
    */
-  async GET(req: Request) {
-    const url = new URL(req.url);
-    const id = url.searchParams.get('id');
-
-    // Get a single post
-    if (id) {
-      try {
-        const post = await faunaClient.query(
-          q.Get(q.Ref(q.Collection('Post'), id))
-        );
-
-        return Response.json({
-          data: post.data,
-        });
-      } catch (error) {
-        return Response.json({
-          error: error.message,
-        });
-      }
-    }
-
-    // If no id is provided, return all posts
+  async GET() {
     try {
       const posts: RemotePost[] = [];
       const { data } = await faunaClient.query(
