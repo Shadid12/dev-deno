@@ -19,7 +19,6 @@ export default function NewPost() {
       body: JSON.stringify({ title, content })
     });
     const data = await response.json();
-    console.log(data);
     alert('Post created!');
     setTitle("");
     setContent("");

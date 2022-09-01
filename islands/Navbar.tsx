@@ -1,10 +1,14 @@
 /** @jsx h */
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { tw } from "@twind";
+import { useState } from "preact/hooks";
+
 
 export const buttonStyle = `relative inline-flex items-center rounded-md border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`;
 
 export default function Navbar() {
+  const [isLoggedin, setLoggedin] = useState(false);
+
   return (
     <nav class={tw`bg-white shadow`}>
       <div class={tw`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`}>
@@ -20,14 +24,29 @@ export default function Navbar() {
             </div>
           </div>
           <div class={tw`flex items-center`}>
-            <div class={tw`flex-shrink-0`}>
-              <a class={tw`${buttonStyle}`} href="/posts/new">
-                <svg class={tw`-ml-1 mr-2 h-5 w-5`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                </svg>
-                <span>New Post</span>
-              </a>
-            </div>
+
+            {isLoggedin ? (
+              <div class={tw`flex-shrink-0`}>
+                <button class={tw`${buttonStyle} ml-2 bg-pink-600`}>Login</button>
+              </div>
+
+            ) : 
+              <Fragment>
+                <div class={tw`flex-shrink-0`}>
+                  <a class={tw`${buttonStyle}`} href="/posts/new">
+                    <svg class={tw`-ml-1 mr-2 h-5 w-5`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                    </svg>
+                    <span>New Post</span>
+                  </a>
+                </div>
+
+                <div class={tw`flex-shrink-0`}>
+                  <button class={tw`${buttonStyle} ml-2 bg-pink-600`}>Logout</button>
+                </div>
+              </Fragment>
+            }
+
           </div>
         </div>
       </div>
