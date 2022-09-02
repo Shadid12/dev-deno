@@ -4,9 +4,15 @@ import { useState, useEffect } from "preact/hooks";
 import { tw } from "@twind";
 import Post, { PostType } from "../components/Post.tsx";
 import { RemotePost } from "../types/Post.ts";
+import { store } from "../store/mystore.ts";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
+
+
+  store.subscribe((state) => {
+    console.log('State-->', state);
+  });
 
   useEffect(() => {
     const fetchPosts = async () => {

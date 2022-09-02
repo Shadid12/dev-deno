@@ -2,12 +2,25 @@
 import { h, Fragment } from "preact";
 import { tw } from "@twind";
 import { useState } from "preact/hooks";
+import { setToken } from '../store/mystore.ts';
 
 
 export const buttonStyle = `relative inline-flex items-center rounded-md border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`;
 
 export default function Navbar() {
   const [isLoggedin, setLoggedin] = useState(false);
+
+  const doLogin = async () => {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        'email': 'shadid2@email.com',
+        'password': 'password'
+      })
+    });
+    const { data } = await response.json()
+    setToken(data.token);
+  }
 
   return (
     <nav class={tw`bg-white shadow`}>
@@ -25,9 +38,9 @@ export default function Navbar() {
           </div>
           <div class={tw`flex items-center`}>
 
-            {isLoggedin ? (
+            {!isLoggedin ? (
               <div class={tw`flex-shrink-0`}>
-                <button class={tw`${buttonStyle} ml-2 bg-pink-600`}>Login</button>
+                <button onClick={doLogin} class={tw`${buttonStyle} ml-2 bg-pink-600`}>Login</button>
               </div>
 
             ) : 
