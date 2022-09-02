@@ -1,8 +1,8 @@
 /** @jsx h */
 import { h, Fragment } from "preact";
 import { tw } from "@twind";
-import { useState } from "preact/hooks";
-import { setToken } from '../store/mystore.ts';
+import { useState, useEffect } from "preact/hooks";
+import { store } from '../store/mystore.ts';
 
 
 export const buttonStyle = `relative inline-flex items-center rounded-md border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`;
@@ -10,17 +10,18 @@ export const buttonStyle = `relative inline-flex items-center rounded-md border 
 export default function Navbar() {
   const [isLoggedin, setLoggedin] = useState(false);
 
-  const doLogin = async () => {
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      body: JSON.stringify({
-        'email': 'shadid2@email.com',
-        'password': 'password'
-      })
-    });
-    const { data } = await response.json()
-    setToken(data.token);
-  }
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setLoggedin(true);
+    }
+  }, []);
+
+  store.subscribe((state) => {
+    if(state.token) {
+      setLoggedin(true);
+      alert('You are logged in');
+    }
+  });
 
   return (
     <nav class={tw`bg-white shadow`}>

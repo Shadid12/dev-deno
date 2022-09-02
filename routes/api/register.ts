@@ -13,6 +13,7 @@ export const handler: Handlers = {
             credentials: { password: body.password },
             data: {
               email: body.email,
+              username: body.username,
             },
           }
         )
