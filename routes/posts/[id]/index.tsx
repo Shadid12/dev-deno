@@ -2,8 +2,8 @@
 import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { faunaClient, q } from "../../utils/db.ts";
-import { RemotePost } from "../../types/Post.ts";
+import { faunaClient, q } from "../../../utils/db.ts";
+import { RemotePost } from "../../../types/Post.ts";
 import { tw } from "@twind";
 
 export const handler: Handlers = {

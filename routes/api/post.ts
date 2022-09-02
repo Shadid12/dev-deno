@@ -65,7 +65,7 @@ export const handler: Handlers = {
     try {
       const body = await req.json();
       const post = await faunaClient.query(
-        q.Update(q.Ref(q.Collection('Post'), body._id), {
+        q.Update(q.Ref(q.Collection('Post'), body.id), {
           data: {
             ...body,
           },

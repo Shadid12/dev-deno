@@ -1,12 +1,12 @@
 /** @jsx h */
 import { h, Fragment } from "preact";
 import { PageProps } from "$fresh/server.ts";
-import NewPost from "../../islands/NewPost.tsx";
+import PostForm from "../../islands/PostForm.tsx";
 
-export default function PostForm(props: PageProps) {
+export default function NewPostPage(props: PageProps) {
   return (
     <Fragment>
-      <NewPost/>
+      <PostForm />
     </Fragment>
   )
 }
