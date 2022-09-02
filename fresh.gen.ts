@@ -7,11 +7,14 @@ import * as $1 from "./routes/api/login.ts";
 import * as $2 from "./routes/api/post.ts";
 import * as $3 from "./routes/api/register.ts";
 import * as $4 from "./routes/index.tsx";
-import * as $5 from "./routes/posts/[id].tsx";
-import * as $6 from "./routes/posts/new.tsx";
-import * as $$0 from "./islands/Navbar.tsx";
-import * as $$1 from "./islands/NewPost.tsx";
-import * as $$2 from "./islands/PostList.tsx";
+import * as $5 from "./routes/login.tsx";
+import * as $6 from "./routes/posts/[id].tsx";
+import * as $7 from "./routes/posts/new.tsx";
+import * as $$0 from "./islands/LoginForm.tsx";
+import * as $$1 from "./islands/Navbar.tsx";
+import * as $$2 from "./islands/NewPost.tsx";
+import * as $$3 from "./islands/PostList.tsx";
+import * as $$4 from "./islands/RegisterForm.tsx";
 
 const manifest = {
   routes: {
@@ -20,13 +23,16 @@ const manifest = {
     "./routes/api/post.ts": $2,
     "./routes/api/register.ts": $3,
     "./routes/index.tsx": $4,
-    "./routes/posts/[id].tsx": $5,
-    "./routes/posts/new.tsx": $6,
+    "./routes/login.tsx": $5,
+    "./routes/posts/[id].tsx": $6,
+    "./routes/posts/new.tsx": $7,
   },
   islands: {
-    "./islands/Navbar.tsx": $$0,
-    "./islands/NewPost.tsx": $$1,
-    "./islands/PostList.tsx": $$2,
+    "./islands/LoginForm.tsx": $$0,
+    "./islands/Navbar.tsx": $$1,
+    "./islands/NewPost.tsx": $$2,
+    "./islands/PostList.tsx": $$3,
+    "./islands/RegisterForm.tsx": $$4,
   },
   baseUrl: import.meta.url,
 };

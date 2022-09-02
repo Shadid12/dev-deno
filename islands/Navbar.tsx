@@ -40,7 +40,7 @@ export default function Navbar() {
 
             {!isLoggedin ? (
               <div class={tw`flex-shrink-0`}>
-                <button onClick={doLogin} class={tw`${buttonStyle} ml-2 bg-pink-600`}>Login</button>
+                <a href="/login" class={tw`${buttonStyle} ml-2 bg-pink-600`}>Login</a>
               </div>
 
             ) : 
