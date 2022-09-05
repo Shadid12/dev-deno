@@ -5,6 +5,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { faunaClient, q } from "../../../utils/db.ts";
 import { RemotePost } from "../../../types/Post.ts";
 import Post from "../../../islands/Post.tsx";
+import Comments from '../../../islands/Comments.tsx';
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -34,6 +35,9 @@ export default function PostPage(props: PageProps) {
     return <div>Loading...</div>
   }
   return (
-    <Post post={post} />
+    <div>
+      <Post post={post} />
+      <Comments postId={post._id} />
+    </div>
   )
 }
