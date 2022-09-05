@@ -41,10 +41,17 @@ export default function PostForm({ edit, post }: { edit?: boolean, post?: Remote
     try {
       const response = await fetch("/api/post", {
         method: "PUT",
+        headers: {
+          "Authorization": localStorage.getItem("token") || "",
+        },
         body: JSON.stringify({ title, content, id: post!._id })
       });
-      await response.json();
-      alert('Post updated!');
+      const data = await response.json();
+      if(data.error) {
+        alert(data.error);
+      } else {
+        alert("Yay!!!, Post updated!");
+      }
     } catch (error) { 
       alert("Something went wrong!");
     }

@@ -37,12 +37,13 @@ export default function Comments({ postId, postComments } : { postId: string, po
       body: JSON.stringify({ _id: id })
     });
     const data = await response.json();
-    alert("Comment deleted!");
-    console.log(data);
-    setComments(comments.filter(comment => comment._id !== id));
+    if(data.error) {
+      alert(data.error);
+    } else {
+      alert("Comment deleted!");
+      setComments(comments.filter(comment => comment._id !== id));
+    }
   };
-
-  console.log(postComments);
 
   return (
     <div class={tw`p-5`}>

@@ -3,7 +3,6 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { faunaClient, q } from "../../../utils/db.ts";
-import { RemotePost } from "../../../types/Post.ts";
 import Post from "../../../islands/Post.tsx";
 import Comments from '../../../islands/Comments.tsx';
 import { RemoteComment } from "../../../types/Comment.ts";
@@ -47,7 +46,6 @@ export const handler: Handlers = {
 
 export default function PostPage(props: PageProps) {
   const [post, setPost] = useState<any>();
-  console.log('--->>', props.data);
   setPost(props.data);
 
   if(!post) { 

@@ -38,7 +38,7 @@ export const handler: Handlers = {
   },
 
   /**
-   * Get all posts / Get a single post
+   * Get all posts
    */
   async GET() {
     try {
@@ -71,7 +71,8 @@ export const handler: Handlers = {
   async PUT(req: Request) { 
     try {
       const body = await req.json();
-      const post = await faunaClient.query(
+      const faunaClientWithAuth = getFaunaClient(req.headers.get("Authorization")!);
+      const post = await faunaClientWithAuth.query(
         q.Update(q.Ref(q.Collection('Post'), body.id), {
           data: {
             ...body,
