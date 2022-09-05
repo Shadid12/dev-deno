@@ -19,7 +19,8 @@ export default function Navbar() {
   store.subscribe((state) => {
     if(state.token) {
       setLoggedin(true);
-      alert('You are logged in');
+      alert('You are logged in 🚪 🗝️');
+      window.location.href = '/';
     }
   });
 

@@ -26,7 +26,7 @@ export default function RegisterForm() {
       });
       const data = await response.json();
       console.log(data);
-      alert("Successfully registered!");
+      alert("Successfully registered!, try to log 🪵 in now");
 
     } catch (error) {
       alert("Something went wrong!");

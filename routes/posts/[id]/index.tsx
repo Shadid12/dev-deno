@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import { useState } from "preact/hooks";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { faunaClient, q } from "../../../utils/db.ts";

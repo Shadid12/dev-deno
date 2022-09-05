@@ -8,3 +8,8 @@ export const faunaClient = new faunadb.Client({
   domain: FAUNA_DOMAIN,
   secret: FAUNA_SECRET,
 });
+
+export const getFaunaClient = (secret: string) => new faunadb.Client({
+  domain: FAUNA_DOMAIN,
+  secret,
+});

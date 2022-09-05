@@ -24,8 +24,11 @@ export default function PostForm({ edit, post }: { edit?: boolean, post?: Remote
   const createPost = async (e: Event) => {
     e.preventDefault();
     const response = await fetch("/api/post", {
+      headers: {
+        "Authorization": localStorage.getItem("token") || "",
+      },
       method: "POST",
-      body: JSON.stringify({ title, content })
+      body: JSON.stringify({ title, content, author: localStorage.getItem("username") }),
     });
     const data = await response.json();
     alert('Post created!');

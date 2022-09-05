@@ -1,6 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
 import { RemotePost } from "../../types/Post.ts";
-import { faunaClient, q } from "../../utils/db.ts";
+import { getFaunaClient, q, faunaClient } from "../../utils/db.ts";
 
 export const handler: Handlers = {
   /**
@@ -9,11 +9,18 @@ export const handler: Handlers = {
   async POST(req: Request) {
     try {
       const body = await req.json();
-
-      const newpost = await faunaClient.query(
+      // Allow only logged in users to create a post
+      const faunaClientWithAuth = getFaunaClient(req.headers.get("Authorization")!);
+      const newpost = await faunaClientWithAuth.query(
         q.Create(
           q.Collection('Post'),
-          { data: { ...body } },
+          { 
+            data: { 
+              ...body, 
+              owner: q.CurrentIdentity(), 
+              author: q.Select(["data", "username"], q.Get(q.CurrentIdentity()))
+            } 
+          },
         )
       );
 
@@ -87,7 +94,8 @@ export const handler: Handlers = {
   async DELETE(req: Request) {
     try {
       const body = await req.json();
-      const post = await faunaClient.query(
+      const faunaClientWithAuth = getFaunaClient(req.headers.get("Authorization")!);
+      const post = await faunaClientWithAuth.query(
         q.Delete(q.Ref(q.Collection('Post'), body._id))
       );
       return Response.json({

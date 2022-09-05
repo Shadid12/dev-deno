@@ -25,7 +25,6 @@ export const handler: Handlers = {
 };
 
 export default function EditPostPage(props: PageProps) {
-  console.log('==>',props.data);
   return (
     <Fragment>
       <PostForm edit post={props.data}/>
