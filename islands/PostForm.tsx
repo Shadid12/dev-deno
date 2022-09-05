@@ -78,7 +78,7 @@ export default function PostForm({ edit, post }: { edit?: boolean, post?: Remote
             onClick={updatePost}
             class={tw`${buttonStyle} mt-1`}
           >
-            Crate Post
+            Update Post
           </button>
         ) : (
           <button 

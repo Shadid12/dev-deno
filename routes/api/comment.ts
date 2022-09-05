@@ -37,32 +37,26 @@ export const handler: Handlers = {
       });
     }
   },
-
   /**
-   * Get all comments by post id
+   * Delete a comment
    */
-  // async GET(req: Request) {
-  //   try {
-  //     const comments: RemoteComment[] = [];
-  //     const commentsByPostId = await faunaClient.query(
-  //       q.Map(
-  //         q.Paginate(q.Documents(q.Collection('Comment'))),
-  //         q.Lambda("comment", q.Get(q.Var("comment")))
-  //       )
-  //     );
-  //     data.forEach((comment: any) => {
-  //       comments.push({
-  //         _id: comment.ref.id,
-  //         ...comment.data,
-  //       });
-  //     })
-  //     return Response.json({
-  //       data: comments,
-  //     });
-  //   } catch (error) {
-  //     return Response.json({
-  //       error: error.message,
-  //     });
-  //   }
-  // }
+
+  async DELETE(req: Request) {
+    try {
+      const body = await req.json();
+      // Allow only owner to delete a comment
+      const faunaClientWithAuth = getFaunaClient(req.headers.get("Authorization")!);
+      const comment = await faunaClientWithAuth.query(
+        q.Delete(q.Ref(q.Collection('Comment'), body._id))
+      );
+      return Response.json({
+        data: comment.data,
+      });
+
+    } catch (error) {
+      return Response.json({
+        error: error.message,
+      });
+    }
+  },
 }
