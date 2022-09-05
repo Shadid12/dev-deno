@@ -23,6 +23,11 @@ export default function Navbar() {
     }
   });
 
+  const doLogout = () => {
+    localStorage.removeItem("token");
+    setLoggedin(false);
+  }
+
   return (
     <nav class={tw`bg-white shadow`}>
       <div class={tw`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`}>
@@ -56,7 +61,7 @@ export default function Navbar() {
                 </div>
 
                 <div class={tw`flex-shrink-0`}>
-                  <button class={tw`${buttonStyle} ml-2 bg-pink-600`}>Logout</button>
+                  <button onClick={doLogout} class={tw`${buttonStyle} ml-2 bg-pink-600`}>Logout</button>
                 </div>
               </Fragment>
             }

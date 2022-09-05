@@ -13,9 +13,10 @@ import * as $7 from "./routes/posts/[id]/index.tsx";
 import * as $8 from "./routes/posts/new.tsx";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/Navbar.tsx";
-import * as $$2 from "./islands/PostForm.tsx";
-import * as $$3 from "./islands/PostList.tsx";
-import * as $$4 from "./islands/RegisterForm.tsx";
+import * as $$2 from "./islands/Post.tsx";
+import * as $$3 from "./islands/PostForm.tsx";
+import * as $$4 from "./islands/PostList.tsx";
+import * as $$5 from "./islands/RegisterForm.tsx";
 
 const manifest = {
   routes: {
@@ -32,9 +33,10 @@ const manifest = {
   islands: {
     "./islands/LoginForm.tsx": $$0,
     "./islands/Navbar.tsx": $$1,
-    "./islands/PostForm.tsx": $$2,
-    "./islands/PostList.tsx": $$3,
-    "./islands/RegisterForm.tsx": $$4,
+    "./islands/Post.tsx": $$2,
+    "./islands/PostForm.tsx": $$3,
+    "./islands/PostList.tsx": $$4,
+    "./islands/RegisterForm.tsx": $$5,
   },
   baseUrl: import.meta.url,
 };

@@ -4,7 +4,7 @@ import { useState } from "preact/hooks";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { faunaClient, q } from "../../../utils/db.ts";
 import { RemotePost } from "../../../types/Post.ts";
-import { tw } from "@twind";
+import Post from "../../../islands/Post.tsx";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -34,11 +34,6 @@ export default function PostPage(props: PageProps) {
     return <div>Loading...</div>
   }
   return (
-    <Fragment>
-      <div class={tw`p-3`}>
-        <h1 class={tw`text-xl pl-4`}>{post.title}</h1>
-        <p class={tw`mt-2 p-4 text-left`}>{post.content}</p>
-      </div>
-    </Fragment>
+    <Post post={post} />
   )
 }
