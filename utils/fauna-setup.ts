@@ -1,15 +1,10 @@
 import * as faunadb from "https://deno.land/x/fauna@5.0.0-deno-alpha9/mod.js";
 
-import { config } from "https://deno.land/x/dotenv/mod.ts";
-
-const { FAUNA_ADMIN_SECRET, FAUNA_DOMAIN } = config();
-
-
 const q = faunadb.query as any;
 
 const faunaClient = new faunadb.Client({ 
-  domain: FAUNA_DOMAIN,
-  secret: FAUNA_ADMIN_SECRET,
+  domain: Deno.env.get("FAUNA_DOMAIN"),
+  secret: Deno.env.get("FAUNA_ADMIN_SECRET"),
 });
 
 
@@ -69,6 +64,13 @@ await faunaClient.query(
         resource: q.Collection("Comment"),
         actions: {
           read: true,
+        }
+      },
+      {
+        resource: q.FaunaIndex("users_by_email"),
+        actions: {
+          unrestricted_read: false,
+          read: true
         }
       }
     ]
@@ -150,3 +152,16 @@ await faunaClient.query(
     ]
   })
 );
+
+const secrect = await faunaClient.query(
+  q.CreateKey({
+    role: q.Role('UnAuthRole'),
+    data: {
+      name: 'For Authenticated Users',
+    },
+  })
+);
+
+console.log('Use the following key as FAUNA_SECRET in .env file: -->');
+
+console.log(secrect.secret);

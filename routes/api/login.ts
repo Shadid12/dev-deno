@@ -19,6 +19,7 @@ export const handler: Handlers = {
         }
       });
     } catch (error) {
+      console.log('==>>>', error);
       return Response.json({
         error: error.message,
       });
