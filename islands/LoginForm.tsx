@@ -26,9 +26,12 @@ export default function LoginForm() {
         body: JSON.stringify({...state}),
       })
       const data = await response.json();
-      setToken(data.data.token);
-      localStorage.setItem("token", data.data.token);
-      // Will set state here
+      if(data.error) {
+        alert(`${data.error} : Make sure you have a correct email and password`);
+      } else {
+        setToken(data.data.token);
+        localStorage.setItem("token", data.data.token);
+      }
     } catch (error) { 
       alert("Something went wrong!");
     }

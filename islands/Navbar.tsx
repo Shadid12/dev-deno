@@ -17,6 +17,7 @@ export default function Navbar() {
   }, []);
 
   store.subscribe((state) => {
+    console.log("state", state);
     if(state.token) {
       setLoggedin(true);
       alert('You are logged in 🚪 🗝️');

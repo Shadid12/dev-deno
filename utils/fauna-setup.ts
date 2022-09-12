@@ -50,24 +50,48 @@ await faunaClient.query(
       {
         resource: q.Collection("User"),
         actions: {
-          create: true,
           read: true,
+          write: false,
+          create: true,
+          delete: false,
+          history_read: false,
+          history_write: false,
+          unrestricted_read: false
         }
       },
       {
         resource: q.Collection("Post"),
         actions: {
           read: true,
+          write: false,
+          create: false,
+          delete: false,
+          history_read: false,
+          history_write: false,
+          unrestricted_read: false
         }
       },
       {
         resource: q.Collection("Comment"),
         actions: {
           read: true,
+          write: false,
+          create: false,
+          delete: false,
+          history_read: false,
+          history_write: false,
+          unrestricted_read: false
         }
       },
       {
         resource: q.FaunaIndex("users_by_email"),
+        actions: {
+          unrestricted_read: false,
+          read: true
+        }
+      },
+      {
+        resource: q.FaunaIndex("comments_by_post"),
         actions: {
           unrestricted_read: false,
           read: true
@@ -92,13 +116,6 @@ await faunaClient.query(
     ],
     privileges: [
       {
-        resource: q.Collection("User"),
-        actions: {
-          create: true,
-          read: true,
-        }
-      },
-      {
         resource: q.Collection("Post"),
         actions: {
           read: true,
@@ -118,12 +135,21 @@ await faunaClient.query(
           delete: q.Query(
             q.Lambda(
               "ref",
-              q.Equals(
-                q.Identity(), // logged in user
-                q.Select(["data", "owner"], q.Get(q.Var("ref")))
-              )
+              q.Equals(q.Identity(), q.Select(["data", "owner"], q.Get(q.Var("ref"))))
             )
           ),
+          history_read: false,
+          history_write: false,
+          unrestricted_read: false
+        }
+      },
+      {
+        resource: q.Collection("User"),
+        actions: {
+          read: true,
+          write: false,
+          create: false,
+          delete: false,
           history_read: false,
           history_write: false,
           unrestricted_read: false
@@ -134,14 +160,11 @@ await faunaClient.query(
         actions: {
           read: true,
           write: false,
-          create: false,
+          create: true,
           delete: q.Query(
             q.Lambda(
               "ref",
-              q.Equals(
-                q.Identity(), // logged in user
-                q.Select(["data", "owner"], q.Get(q.Var("ref")))
-              )
+              q.Equals(q.Identity(), q.Select(["data", "owner"], q.Get(q.Var("ref"))))
             )
           ),
           history_read: false,
@@ -157,7 +180,7 @@ const secrect = await faunaClient.query(
   q.CreateKey({
     role: q.Role('UnAuthRole'),
     data: {
-      name: 'For Authenticated Users',
+      name: 'For Unauthenticated Users',
     },
   })
 );
