@@ -1,7 +1,5 @@
-/** @jsx h */
-import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import { tw } from "@twind";
+import { tw } from "twind";
 import { buttonStyle } from "../islands/Navbar.tsx";
 import { RemotePost } from "../types/Post.ts";
 
@@ -58,8 +56,8 @@ export default function PostForm({ edit, post }: { edit?: boolean, post?: Remote
   }
 
   return (
-    <div class={tw`p-5 m-5`}>
-      <h1 class={tw`text-xl`}>
+    <div class="p-5 m-5">
+      <h1 class="text-xl">
         {edit ? "Edit Post" : "Create Post"}
       </h1>
       <div class="mt-1 flex">

@@ -1,7 +1,4 @@
-/** @jsx h */
-import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import { tw } from "@twind";
 import Post from "../components/Post.tsx";
 import { RemotePost } from "../types/Post.ts";
 
@@ -25,8 +22,8 @@ export default function PostList() {
   console.log(posts);
 
   return (
-    <div class={tw`p-5`}>
-      <h1 class={tw`text-xl`}>Post List</h1>
+    <div class="p-5">
+      <h1 class="text-xl">Post List</h1>
       {
         posts.map((post: RemotePost) => (
           <Post post={post} id={post._id} />

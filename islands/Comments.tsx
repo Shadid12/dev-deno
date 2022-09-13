@@ -1,6 +1,4 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
+import { tw } from "twind";
 import { useState, useEffect } from "preact/hooks";
 import { inputStyle } from "./PostForm.tsx";
 import { buttonStyle } from "./Navbar.tsx";
@@ -46,7 +44,7 @@ export default function Comments({ postId, postComments } : { postId: string, po
   };
 
   return (
-    <div class={tw`p-5`}>
+    <div class="p-5">
       <div class="mt-1 flex p-5">
         <input 
           class={tw`${inputStyle} w-2/5`} 
@@ -61,13 +59,13 @@ export default function Comments({ postId, postComments } : { postId: string, po
           Save
         </button>
       </div>
-      <div class={tw`p-5`}>
+      <div class="p-5">
       {
         comments.map((comment) => (
-          <div class={tw`p-3 flex`}>
-            <div class={tw`text-md pl-4`}>{comment.content} --- by</div>
-            <div class={tw`text-md pl-4 font-bold`}>{comment.author}</div>
-            <button onClick={() => deleteComment(comment._id)} class={tw`ml-2 pl-1 pr-1 rounded-md border bg-red-100`}>Delete</button>
+          <div class="p-3 flex">
+            <div class="text-md pl-4">{comment.content} --- by</div>
+            <div class="text-md pl-4 font-bold">{comment.author}</div>
+            <button onClick={() => deleteComment(comment._id)} class="ml-2 pl-1 pr-1 rounded-md border bg-red-100">Delete</button>
           </div>
         ))
         }

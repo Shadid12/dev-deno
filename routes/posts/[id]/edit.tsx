@@ -1,8 +1,8 @@
-/** @jsx h */
-import { h, Fragment } from "preact";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import PostForm from "../../../islands/PostForm.tsx";
-import { faunaClient,q } from "../../../utils/db.ts";
+import { faunaClient, q } from "../../../utils/db.ts";
+import { Fragment } from "preact";
+
 
 export const handler: Handlers = {
   async GET(_req, ctx) {

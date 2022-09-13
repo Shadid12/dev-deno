@@ -1,7 +1,6 @@
-/** @jsx h */
-import { h, Fragment } from "preact";
-import { tw } from "@twind";
 import { RemotePost } from "../types/Post.ts";
+import { Fragment } from "preact";
+
 
 export default function Post({ post } : { post: RemotePost }) {
   const deletePost = async () => {
@@ -24,14 +23,14 @@ export default function Post({ post } : { post: RemotePost }) {
   }
   return (
     <Fragment>
-      <div class={tw`p-3`}>
-        <h1 class={tw`text-xl pl-4`}>{post.title}</h1>
-        <div class={tw`text-sm font-bold pl-4`}>By {post.author}</div>
-        <p class={tw`pl-4 text-left`}>{post.content}</p>
-        <a href={`/posts/${post._id}/edit`} class={tw`font-bold py-3 px-3 rounded mr-2 ml-2 hover:underline hover:bg-purple-200`}>
+      <div class="p-3">
+        <h1 class="text-xl pl-4">{post.title}</h1>
+        <div class="text-sm font-bold pl-4">By {post.author}</div>
+        <p class="pl-4 text-left">{post.content}</p>
+        <a href={`/posts/${post._id}/edit`} class="font-bold py-3 px-3 rounded mr-2 ml-2 hover:underline hover:bg-purple-200">
           Edit
         </a>
-        <button onClick={deletePost} class={tw`bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded`}>
+        <button onClick={deletePost} class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
           Delete
         </button>
       </div>
