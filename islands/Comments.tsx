@@ -20,9 +20,13 @@ export default function Comments({ postId, postComments } : { postId: string, po
       body: JSON.stringify({ content, postId })
     }); 
     const data = await response.json();
-    alert("Comment created!");
-    setContent("");
-    setComments([...comments, data.data]);
+    if(data.error) {
+      alert('Login to post a comment!');
+    } else {
+      alert("Comment created!");
+      setContent("");
+      setComments([...comments, data.data]);
+    }
   };
 
   const deleteComment = async (id: string) => {
