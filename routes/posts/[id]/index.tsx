@@ -1,9 +1,9 @@
 import { useState } from "preact/hooks";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { faunaClient, q } from "../../../utils/db.ts";
-import Post from "../../../islands/Post.tsx";
 import Comments from '../../../islands/Comments.tsx';
 import { RemoteComment } from "../../../types/Comment.ts";
+import Post from "../../../components/Post.tsx";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
-import Post from "../components/Post.tsx";
+import PostItem from "../components/PostItem.tsx";
 import { RemotePost } from "../types/Post.ts";
 
 export default function PostList() {
@@ -26,7 +26,7 @@ export default function PostList() {
       <h1 class="text-xl">Post List</h1>
       {
         posts.map((post: RemotePost) => (
-          <Post post={post} id={post._id} />
+          <PostItem post={post} id={post._id} />
         ))  
       }
     </div>
