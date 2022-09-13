@@ -1,4 +1,3 @@
-import { tw } from "twind";
 import { buttonStyle } from "./NavMenu.tsx";
 import { useState } from "preact/hooks";
 
@@ -34,15 +33,15 @@ export default function RegisterForm() {
   return (
     <div>
       <div class="pl-4 pt-4 mt-4">
-        <input onChange={handleChange} type="text" class={tw`${inputStyle}`} placeholder="Name" name="username"/>
+        <input onChange={handleChange} type="text" class={`${inputStyle}`} placeholder="Name" name="username"/>
       </div>
       <div class="pl-4 pt-4 mt-1">
-        <input onChange={handleChange} type="email" class={tw`${inputStyle}`} placeholder="Email" name="email"/>
+        <input onChange={handleChange} type="email" class={`${inputStyle}`} placeholder="Email" name="email"/>
       </div>
       <div class="pl-4 pt-2 mt-1">
-        <input onChange={handleChange} type="password" class={tw`${inputStyle}`} placeholder="Password" name="password"/>
+        <input onChange={handleChange} type="password" class={`${inputStyle}`} placeholder="Password" name="password"/>
       </div>
-      <button onClick={register} class={tw`${buttonStyle} pl-4 ml-4 mt-2`}>Register</button>
+      <button onClick={register} class={`${buttonStyle} pl-4 ml-4 mt-2`}>Register</button>
       <hr class="mt-4 w-2/5"/>
     </div>
   )

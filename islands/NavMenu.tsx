@@ -1,4 +1,3 @@
-import { tw } from "twind";
 import { Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { store } from '../store/mystore.ts';
@@ -33,13 +32,13 @@ export default function Navbar() {
     <div class="flex items-center">
       {!isLoggedin ? (
         <div class="flex-shrink-0">
-          <a href="/login" class={tw`${buttonStyle} ml-2 bg-pink-600`}>Login</a>
+          <a href="/login" class={`${buttonStyle} ml-2 bg-pink-600`}>Login</a>
         </div>
 
       ) : 
         <Fragment>
           <div class="flex-shrink-0">
-            <a class={tw`${buttonStyle}`} href="/posts/new">
+            <a class={`${buttonStyle}`} href="/posts/new">
               <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
               </svg>
@@ -48,7 +47,7 @@ export default function Navbar() {
           </div>
 
           <div class="flex-shrink-0">
-            <button onClick={doLogout} class={tw`${buttonStyle} ml-2 bg-pink-600`}>Logout</button>
+            <button onClick={doLogout} class={`${buttonStyle} ml-2 bg-pink-600`}>Logout</button>
           </div>
         </Fragment>
       }

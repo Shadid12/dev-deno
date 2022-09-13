@@ -1,4 +1,3 @@
-import { tw } from "twind";
 import { useState, useEffect } from "preact/hooks";
 import { inputStyle } from "./PostForm.tsx";
 import { buttonStyle } from "./NavMenu.tsx";
@@ -47,14 +46,14 @@ export default function Comments({ postId, postComments } : { postId: string, po
     <div class="p-5">
       <div class="mt-1 flex p-5">
         <input 
-          class={tw`${inputStyle} w-2/5`} 
+          class={`${inputStyle} w-2/5`} 
           placeholder="Make a comment"
           onChange={(e: any) => setContent(e.target.value)}
           value={content}
         />
         <button 
           onClick={saveComment}
-          class={tw`${buttonStyle} ml-1`}
+          class={`${buttonStyle} ml-1`}
         >
           Save
         </button>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "preact/hooks";
-import { tw } from "twind";
 import { buttonStyle } from "./NavMenu.tsx";
 import { RemotePost } from "../types/Post.ts";
 
@@ -62,7 +61,7 @@ export default function PostForm({ edit, post }: { edit?: boolean, post?: Remote
       </h1>
       <div class="mt-1 flex">
         <input 
-          class={tw`${inputStyle}`} 
+          class={`${inputStyle}`} 
           placeholder="Post Title"
           onChange={(e: any) => setTitle(e.target.value)}
           value={title}
@@ -70,7 +69,7 @@ export default function PostForm({ edit, post }: { edit?: boolean, post?: Remote
       </div>
       <div class="mt-1 flex">
         <textarea 
-          class={tw`${inputStyle}`} 
+          class={`${inputStyle}`} 
           placeholder="Write something..."
           onChange={(e: any) => setContent(e.target.value)}
           value={content}
@@ -81,14 +80,14 @@ export default function PostForm({ edit, post }: { edit?: boolean, post?: Remote
         edit ? (
           <button 
             onClick={updatePost}
-            class={tw`${buttonStyle} mt-1`}
+            class={`${buttonStyle} mt-1`}
           >
             Update Post
           </button>
         ) : (
           <button 
             onClick={createPost}
-            class={tw`${buttonStyle} mt-1`}
+            class={`${buttonStyle} mt-1`}
           >
             Crate Post
           </button>
