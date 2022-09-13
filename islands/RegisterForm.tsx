@@ -1,5 +1,5 @@
 import { tw } from "twind";
-import { buttonStyle } from "./Navbar.tsx";
+import { buttonStyle } from "./NavMenu.tsx";
 import { useState } from "preact/hooks";
 
 export const inputStyle = `p-2 border-2 border-purple-200 focus:border-indigo-500 radius rounded-md flex w-2/5`;

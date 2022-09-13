@@ -1,6 +1,6 @@
 import { IS_BROWSER } from "$fresh/runtime.ts";
 
-export function Button(props: h.JSX.HTMLAttributes<HTMLButtonElement>) {
+export function Button(props: { children: any, onClick: () => void , disabled?: boolean }) {
   return (
     <button
       {...props}

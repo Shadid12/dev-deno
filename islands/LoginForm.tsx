@@ -1,5 +1,5 @@
 import { tw } from "twind";
-import { buttonStyle } from "./Navbar.tsx";
+import { buttonStyle } from "./NavMenu.tsx";
 import { useState } from "preact/hooks";
 import { setToken } from "../store/mystore.ts";
 

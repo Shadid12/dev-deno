@@ -15,7 +15,7 @@ import * as $8 from "./routes/posts/[id]/index.tsx";
 import * as $9 from "./routes/posts/new.tsx";
 import * as $$0 from "./islands/Comments.tsx";
 import * as $$1 from "./islands/LoginForm.tsx";
-import * as $$2 from "./islands/Navbar.tsx";
+import * as $$2 from "./islands/NavMenu.tsx";
 import * as $$3 from "./islands/Post.tsx";
 import * as $$4 from "./islands/PostForm.tsx";
 import * as $$5 from "./islands/PostList.tsx";
@@ -37,7 +37,7 @@ const manifest = {
   islands: {
     "./islands/Comments.tsx": $$0,
     "./islands/LoginForm.tsx": $$1,
-    "./islands/Navbar.tsx": $$2,
+    "./islands/NavMenu.tsx": $$2,
     "./islands/Post.tsx": $$3,
     "./islands/PostForm.tsx": $$4,
     "./islands/PostList.tsx": $$5,

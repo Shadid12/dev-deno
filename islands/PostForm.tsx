@@ -1,6 +1,6 @@
 import { useState, useEffect } from "preact/hooks";
 import { tw } from "twind";
-import { buttonStyle } from "../islands/Navbar.tsx";
+import { buttonStyle } from "./NavMenu.tsx";
 import { RemotePost } from "../types/Post.ts";
 
 export const inputStyle = `p-4 border-2 border-purple-400 radius rounded-md flex w-9/12`;

@@ -1,7 +1,7 @@
 import { tw } from "twind";
 import { useState, useEffect } from "preact/hooks";
 import { inputStyle } from "./PostForm.tsx";
-import { buttonStyle } from "./Navbar.tsx";
+import { buttonStyle } from "./NavMenu.tsx";
 import { RemoteComment } from "../types/Comment.ts";
 
 export default function Comments({ postId, postComments } : { postId: string, postComments: RemoteComment[] }) {
