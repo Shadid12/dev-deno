@@ -1,5 +1,7 @@
 # Fresh + Fauna
 
+![Live app](https://fresh-blogs.deno.dev/)
+
 ## Getting Started
 
 - Clone the code.
